@@ -1,3 +1,4 @@
+use std::fmt::Display;
 use image::RgbaImage;
 
 use crate::{error::XCapResult, platform::impl_monitor::ImplMonitor};
@@ -10,6 +11,12 @@ pub struct Monitor {
 impl PartialEq<Self> for Monitor {
     fn eq(& self, other: &Self) -> bool {
         self.impl_monitor.id == other.impl_monitor.id
+    }
+}
+
+impl Display for Monitor {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.impl_monitor.name.clone())
     }
 }
 impl Eq for Monitor{
