@@ -7,6 +7,14 @@ pub struct Monitor {
     pub(crate) impl_monitor: ImplMonitor,
 }
 
+impl PartialEq<Self> for Monitor {
+    fn eq(& self, other: &Self) -> bool {
+        self.impl_monitor.id == other.impl_monitor.id
+    }
+}
+impl Eq for Monitor{
+}
+unsafe impl Send for Monitor {}
 impl Monitor {
     pub(crate) fn new(impl_monitor: ImplMonitor) -> Monitor {
         Monitor { impl_monitor }
