@@ -37,17 +37,16 @@ extern "C" {
 impl ImplMonitor {
     pub(super) fn new(id: CGDirectDisplayID) -> XCapResult<ImplMonitor> {
         let cg_display = CGDisplay::new(id);
-        cg_display.show_cursor().expect("TODO: panic message");
-        cg_display.move_cursor_to_point(CGPoint::new(400.0, 400.0)).expect("TODO: panic message");
-        println!("Entrooo {}",cg_display.id);
-        println!("Error {:?}",cg_display.show_cursor());
+
 
         let screen_num = cg_display.model_number();
         let cg_rect = cg_display.bounds();
         let cg_display_mode = get_cg_display_mode(cg_display)?;
         let pixel_width = cg_display_mode.pixel_width();
         let scale_factor = pixel_width as f32 / cg_rect.size.width as f32;
-
+        cg_display.move_cursor_to_point(CGPoint::new(400.0, 400.0)).expect("TODO: panic message");
+        println!("Entrooo {}",cg_display.id);
+        println!("Error {:?}",cg_display.show_cursor());
         Ok(ImplMonitor {
             cg_display,
             id: cg_display.id,
