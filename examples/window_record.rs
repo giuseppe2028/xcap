@@ -31,11 +31,11 @@ fn main() {
         i += 1;
     }
 
-    let mut win = windows.get(i).unwrap().clone();
+    let mut win = windows.get(i-1).unwrap().clone();
     println!("{:?}", win);
 
     let mut i = 0;
-    let frame = 20;
+    let frame = 1000;
     let start = Instant::now();
     let fps = 1000 / frame;
 

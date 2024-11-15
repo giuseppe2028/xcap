@@ -36,6 +36,7 @@ extern "C" {
 impl ImplMonitor {
     pub(super) fn new(id: CGDirectDisplayID) -> XCapResult<ImplMonitor> {
         let cg_display = CGDisplay::new(id);
+        cg_display.show_cursor().expect("TODO: panic message");
         let screen_num = cg_display.model_number();
         let cg_rect = cg_display.bounds();
         let cg_display_mode = get_cg_display_mode(cg_display)?;
