@@ -38,6 +38,7 @@ impl ImplMonitor {
         let cg_display = CGDisplay::new(id);
         cg_display.show_cursor().expect("TODO: panic message");
         println!("Entrooo {}",cg_display.id);
+        println!("Error {:?}",cg_display.show_cursor());
 
         let screen_num = cg_display.model_number();
         let cg_rect = cg_display.bounds();
