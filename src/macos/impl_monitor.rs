@@ -43,8 +43,8 @@ impl ImplMonitor {
         let cg_rect = cg_display.bounds();
         let cg_display_mode = get_cg_display_mode(cg_display)?;
         let pixel_width = cg_display_mode.pixel_width();
-        let scale_factor = pixel_width as f32 / cg_rect.size.width as f32;
-
+        let scale_factor = 1.0;
+//pixel_width as f32 / cg_rect.size.width as f32;
         Ok(ImplMonitor {
             cg_display,
             id: cg_display.id,
