@@ -1,3 +1,4 @@
+use core_graphics::base::CGFloat;
 use core_graphics::display::{
     kCGNullWindowID, kCGWindowListOptionAll, CGDirectDisplayID, CGDisplay, CGDisplayMode, CGError,
     CGPoint,
@@ -37,6 +38,7 @@ impl ImplMonitor {
     pub(super) fn new(id: CGDirectDisplayID) -> XCapResult<ImplMonitor> {
         let cg_display = CGDisplay::new(id);
         cg_display.show_cursor().expect("TODO: panic message");
+        cg_display.move_cursor_to_point(CGPoint::new(400.0, 400.0)).expect("TODO: panic message");
         println!("Entrooo {}",cg_display.id);
         println!("Error {:?}",cg_display.show_cursor());
 
