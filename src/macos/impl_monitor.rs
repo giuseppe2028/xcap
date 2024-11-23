@@ -118,6 +118,24 @@ impl ImplMonitor {
             Ok(impl_monitor)
         }
     }
+
+    /// Set the screen x coordinate.
+    pub fn set_x(&mut self, x: i32) {
+        self.x = x;
+    }
+
+    /// Set the screen y coordinate.
+    pub fn set_y(&mut self, y: i32) {
+        self.y = y;
+    }
+
+    pub fn set_width(&mut self, width: u32){
+        self.width = width;
+    }
+
+    pub fn set_height(&mut self, height: u32){
+        self.height = height;
+    }
 }
 
 fn get_cg_display_mode(cg_display: CGDisplay) -> XCapResult<CGDisplayMode> {
