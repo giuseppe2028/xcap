@@ -1,7 +1,7 @@
-pub(crate) struct DisplayOptions{
-    pub(crate) x:f64,
-    pub(crate) y:f64,
-    pub(crate) width:f64,
-    pub(crate) height:f64
+pub struct DisplayOptions{
+    pub x:f64,
+    pub y:f64,
+    pub width:f64,
+    pub height:f64
 
 }
