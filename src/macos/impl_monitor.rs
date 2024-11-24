@@ -1,8 +1,5 @@
 use core_graphics::base::CGFloat;
-use core_graphics::display::{
-    kCGNullWindowID, kCGWindowListOptionAll, CGDirectDisplayID, CGDisplay, CGDisplayMode, CGError,
-    CGPoint,
-};
+use core_graphics::display::{kCGNullWindowID, kCGWindowListOptionAll, CGDirectDisplayID, CGDisplay, CGDisplayMode, CGError, CGPoint, CGRect, CGSize};
 use image::RgbaImage;
 
 use crate::error::{XCapError, XCapResult};
@@ -147,11 +144,38 @@ fn get_cg_display_mode(cg_display: CGDisplay) -> XCapResult<CGDisplayMode> {
 }
 
 impl ImplMonitor {
-    pub fn capture_image(&self) -> XCapResult<RgbaImage> {
-        capture(
-            self.cg_display.bounds(),
-            kCGWindowListOptionAll,
-            kCGNullWindowID,
-        )
+    pub fn capture_image(&self,options:Option<DisplayOptions> ) -> XCapResult<RgbaImage> {
+        match options {
+            None => {
+                //default behaviour
+                capture(
+                    self.cg_display.bounds(),
+                    kCGWindowListOptionAll,
+                    kCGNullWindowID,
+                )
+            }
+            Some(_) => {
+                let id = self.id;
+                let options = options.unwrap();
+                let a = CGRect{
+                    origin: CGPoint{ x: options.x, y: options.y },
+                    size: CGSize{ width: options.width, height: options.height },
+                };
+                capture(
+                    a,
+                    kCGWindowListOptionAll,
+                    kCGNullWindowID,
+                )
+            }
+        }
+
     }
+}
+
+struct DisplayOptions{
+    x:f64,
+    y:f64,
+    width:f64,
+    height:f64
+
 }
