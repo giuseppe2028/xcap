@@ -109,11 +109,19 @@ impl Monitor {
 impl Monitor {
     /// Capture image of the monitor
     pub fn capture_image(&self, options: Option<[(f64,f64);2]>) -> XCapResult<RgbaImage> {
-        self.impl_monitor.capture_image(Some(DisplayOptions{
-            x:options.unwrap()[0].0,
-            y:options.unwrap()[0].1,
-            width:options.unwrap()[1].0,
-            height:options.unwrap()[1].1,
-        }))
+        match options {
+            None => {
+                self.impl_monitor.capture_image(None)
+            }
+            Some(_) => {
+                self.impl_monitor.capture_image(Some(DisplayOptions{
+                    x:options.unwrap()[0].0,
+                    y:options.unwrap()[0].1,
+                    width:options.unwrap()[1].0,
+                    height:options.unwrap()[1].1,
+                }))
+            }
+        }
+
     }
 }
