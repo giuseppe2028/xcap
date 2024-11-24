@@ -2,6 +2,7 @@ use std::fmt::Display;
 use image::RgbaImage;
 
 use crate::{error::XCapResult, platform::impl_monitor::ImplMonitor};
+use crate::DisplayOptions::DisplayOptions;
 
 #[derive(Debug, Clone)]
 pub struct Monitor {
@@ -107,7 +108,7 @@ impl Monitor {
 
 impl Monitor {
     /// Capture image of the monitor
-    pub fn capture_image(&self) -> XCapResult<RgbaImage> {
-        self.impl_monitor.capture_image()
+    pub fn capture_image(&self, options:Option<DisplayOptions>) -> XCapResult<RgbaImage> {
+        self.impl_monitor.capture_image(options)
     }
 }

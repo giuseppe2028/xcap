@@ -13,6 +13,7 @@ mod platform;
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
 mod platform;
+mod DisplayOptions;
 
 pub use image;
 

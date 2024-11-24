@@ -1,7 +1,7 @@
 use core_graphics::base::CGFloat;
 use core_graphics::display::{kCGNullWindowID, kCGWindowListOptionAll, CGDirectDisplayID, CGDisplay, CGDisplayMode, CGError, CGPoint, CGRect, CGSize};
 use image::RgbaImage;
-
+use crate::DisplayOptions::DisplayOptions;
 use crate::error::{XCapError, XCapResult};
 
 use super::capture::capture;
@@ -170,12 +170,4 @@ impl ImplMonitor {
         }
 
     }
-}
-
-struct DisplayOptions{
-    x:f64,
-    y:f64,
-    width:f64,
-    height:f64
-
 }

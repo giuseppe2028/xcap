@@ -17,7 +17,7 @@ fn main() {
     dir::create_all("target/monitors", true).unwrap();
 
     for monitor in monitors {
-        let image = monitor.capture_image().unwrap();
+        let image = monitor.capture_image(None).unwrap();
 
         image
             .save(format!(
