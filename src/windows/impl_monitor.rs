@@ -159,13 +159,11 @@ impl ImplMonitor {
 
 impl ImplMonitor {
     pub fn capture_image(&self,options:Option<DisplayOptions>) -> XCapResult<RgbaImage> {
-        let option = options.unwrap();
         match options {
             None =>{
                 capture_monitor(self.x, self.y, self.width as i32, self.height as i32)
-
             },
-            Some(_) =>{
+            Some(option) =>{
                 capture_monitor(option.x,option.y,option.width,option.height)
             }
         }
