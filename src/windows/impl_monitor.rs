@@ -164,7 +164,7 @@ impl ImplMonitor {
                 capture_monitor(self.x, self.y, self.width as i32, self.height as i32)
             },
             Some(option) =>{
-                capture_monitor(option.x,option.y,option.width,option.height)
+                capture_monitor(option.x as i32,option.y as i32,option.width as i32,option.height as i32)
             }
         }
     }
