@@ -13,7 +13,7 @@ use windows::{
         UI::WindowsAndMessaging::MONITORINFOF_PRIMARY,
     },
 };
-
+use crate::DisplayOptions::DisplayOptions;
 use crate::error::{XCapError, XCapResult};
 
 use super::{boxed::BoxHDC, capture::capture_monitor, utils::wide_string_to_string};
@@ -158,7 +158,15 @@ impl ImplMonitor {
 }
 
 impl ImplMonitor {
-    pub fn capture_image(&self) -> XCapResult<RgbaImage> {
-        capture_monitor(self.x, self.y, self.width as i32, self.height as i32)
+    pub fn capture_image(&self,options:Option<DisplayOptions>) -> XCapResult<RgbaImage> {
+        match options {
+            None =>{
+                capture_monitor(self.x, self.y, self.width as i32, self.height as i32)
+
+            },
+            Some(_) =>{
+                capture_monitor(option.x,option.y,option.width,option.height)
+            }
+        }
     }
 }
