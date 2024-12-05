@@ -12,7 +12,7 @@ use xcb::{
 use crate::error::{XCapError, XCapResult};
 
 use super::capture::capture_monitor;
-
+use crate::DisplayOptions::DisplayOptions;
 #[derive(Debug, Clone)]
 pub(crate) struct ImplMonitor {
     pub screen_buf: ScreenBuf,
