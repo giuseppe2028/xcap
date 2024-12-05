@@ -1,6 +1,8 @@
 use image::RgbaImage;
 use std::env::var_os;
+use xcb::{
 
+}
 use crate::error::XCapResult;
 
 use super::{
@@ -43,14 +45,14 @@ pub fn capture_window(impl_window: &ImplWindow) -> XCapResult<RgbaImage> {
 }
 
 pub fn capture_screen_area(
-    screen_info: &ScreenInfo,
+    screen_info: Window,
     x: i32,
     y: i32,
     width: u32,
     height: u32,
 ) -> XCapResult<RgbaImage> {
     if wayland_detect() {
-        wayland_capture_screen_area(screen_info, x, y, width, height)
+        return Err(XCapError::new("Wayland is not implemented"));
     } else {
         xorg_capture(screen_info, x, y, width, height)
     }
