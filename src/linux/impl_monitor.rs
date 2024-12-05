@@ -238,20 +238,13 @@ impl ImplMonitor {
                 capture_monitor(self)
             },
             Some(option) =>{
-                capture_monitor(ImplMonitor::new(
-                    self.screen_buf,
-                    self.monitor_info_buf,
-                    self.id,
-                    self.name,
-                    option.x,
-                    option.y,
-                    option.width,
-                    option.height,
-                    self.rotation,
-                    self.scale_factor,
-                    self.frequency,
-                    self.is_primary
-                ))
+                capture_screen_area(
+                    self.screen_buf.root(),
+                    self.x,
+                    self.y,
+                    self.width,
+                    self.height
+                )
             }
         }
     }
