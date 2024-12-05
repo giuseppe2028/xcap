@@ -10,7 +10,6 @@ use xcb::{
 };
 
 use crate::error::{XCapError, XCapResult};
-
 use super::capture::capture_monitor;
 use crate::DisplayOptions::DisplayOptions;
 #[derive(Debug, Clone)]
@@ -239,7 +238,20 @@ impl ImplMonitor {
                 capture_monitor(self)
             },
             Some(option) =>{
-                capture_screen_area(option.x,option.y,option.width,option.height)
+                capture_monitor(ImplMonitor::new(
+                    self.screen_buf,
+                    self.monitor_info_buf,
+                    self.id,
+                    self.name,
+                    option.x,
+                    option.y,
+                    option.width,
+                    option.height,
+                    self.rotation,
+                    self.scale_factor,
+                    self.frequency,
+                    self.is_primary
+                ))
             }
         }
     }

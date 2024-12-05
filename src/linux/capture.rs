@@ -42,16 +42,16 @@ pub fn capture_window(impl_window: &ImplWindow) -> XCapResult<RgbaImage> {
     xorg_capture(impl_window.window, 0, 0, width, height)
 }
 
-fn capture_screen_area(
-    screen_info: &ScreenInfo,
-    x: i32,
-    y: i32,
-    width: u32,
-    height: u32,
-) -> XCapResult<RgbaImage> {
-    if wayland_detect() {
-        wayland_capture_screen_area(screen_info, x, y, width, height)
-    } else {
-        xorg_capture_screen_area(screen_info, x, y, width, height)
-    }
-}
+// fn capture_screen_area(
+//     screen_info: &ScreenInfo,
+//     x: i32,
+//     y: i32,
+//     width: u32,
+//     height: u32,
+// ) -> XCapResult<RgbaImage> {
+//     if wayland_detect() {
+//         wayland_capture_screen_area(screen_info, x, y, width, height)
+//     } else {
+//         xorg_capture_screen_area(screen_info, x, y, width, height)
+//     }
+// }
