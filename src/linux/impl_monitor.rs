@@ -239,12 +239,7 @@ impl ImplMonitor {
                 capture_monitor(self)
             },
             Some(option) =>{
-                self.x = option.x as i32;
-                self.y = option.y as i32;
-                self.width = option.width as u32;
-                self.height = option.height as u32;
-
-                capture_monitor(self)
+                capture_screen_area(option.x,option.y,option.width,option.height)
             }
         }
     }
