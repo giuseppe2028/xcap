@@ -8,7 +8,7 @@ use xcb::{
     x::{GetProperty, Screen, ScreenBuf, ATOM_RESOURCE_MANAGER, ATOM_STRING, CURRENT_TIME},
     Connection, Xid,
 };
-use crate::DisplayOptions::DisplayOptions;
+
 use crate::error::{XCapError, XCapResult};
 
 use super::capture::capture_monitor;
@@ -236,10 +236,15 @@ impl ImplMonitor {
     pub fn capture_image(&self,options:Option<DisplayOptions>) -> XCapResult<RgbaImage> {
         match options {
             None =>{
-                capture_monitor(self.x, self.y, self.width as i32, self.height as i32)
+                capture_monitor(self)
             },
             Some(option) =>{
-                capture_monitor(option.x as i32,option.y as i32,option.width as i32,option.height as i32)
+                self.x = option.x as i32;
+                self.y = option.y as i32;
+                self.width = option.width as i32;
+                self.height = option.height as i32;
+
+                capture_monitor(self)
             }
         }
     }
