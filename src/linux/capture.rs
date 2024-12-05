@@ -3,6 +3,7 @@ use std::env::var_os;
 use xcb::{
 
 };
+use xcap::Window;
 
 use crate::error::{XCapError, XCapResult};
 use crate::error::XCapResult;
