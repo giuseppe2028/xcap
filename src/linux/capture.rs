@@ -4,7 +4,7 @@ use xcb::
     x::Window;
 
 use crate::error::{XCapError, XCapResult};
-use crate::error::XCapResult;
+
 
 use super::{
     impl_monitor::ImplMonitor, impl_window::ImplWindow, wayland_capture::wayland_capture,
