@@ -1,9 +1,7 @@
 use image::RgbaImage;
 use std::env::var_os;
-use xcb::{
-
-};
-use xcap::Window;
+use xcb::
+    x::Window;
 
 use crate::error::{XCapError, XCapResult};
 use crate::error::XCapResult;
