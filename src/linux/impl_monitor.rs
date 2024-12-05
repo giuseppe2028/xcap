@@ -12,6 +12,8 @@ use xcb::{
 use crate::error::{XCapError, XCapResult};
 use super::capture::capture_monitor;
 use crate::DisplayOptions::DisplayOptions;
+use super::capture::capture_screen_area;
+
 #[derive(Debug, Clone)]
 pub(crate) struct ImplMonitor {
     pub screen_buf: ScreenBuf,
