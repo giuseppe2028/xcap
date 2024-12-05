@@ -242,10 +242,10 @@ impl ImplMonitor {
             Some(option) =>{
                 capture_screen_area(
                     self.screen_buf.root(),
-                    option.x,
-                    option.y,
-                    option.width,
-                    option.height
+                    option.x as i32,
+                    option.y as i32,
+                    option.width as u32,
+                    option.height as u32
                 )
             }
         }
